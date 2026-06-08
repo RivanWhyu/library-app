@@ -6,8 +6,8 @@ Sistem menerapkan **Authentication**, **Role-Based Access Control (RBAC)**, rela
 
 ---
 # Dokumen Pengumpulan UTS
-[Laporan dan Testing Postman](./docs/DOKUMENTASI-BACKEND-SISTEM-PERPUSTAKAAN.pdf)
-[Postman Collection](./Test_API_Libraru-APP.json)
+- [Laporan dan Testing Postman](./docs/DOKUMENTASI-BACKEND-SISTEM-PERPUSTAKAAN.pdf)
+- [Postman Collection](./Test_API_Libraru-APP.json)
 ---
 
 # Fitur Sistem
@@ -32,16 +32,7 @@ Sistem menerapkan **Authentication**, **Role-Based Access Control (RBAC)**, rela
 - Melihat Riwayat Peminjaman
 
 ---
-# Struktur Database
-
-#  ERD Sederhana
-<img width="561" height="1080" alt="Diagram Tanpa Judul drawio" src="https://github.com/user-attachments/assets/429d9fc6-1390-4c21-9932-c5671cb88a88" />
-
----
-
-# Role Based Access Control (RBAC)
-
-# ⚙️ Instalasi Project
+# Instalasi Project
 
 ## 1. Clone Repository
 
