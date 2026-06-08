@@ -77,6 +77,7 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
+---
 
 ## 5. Konfigurasi Database
 
