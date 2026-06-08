@@ -1,58 +1,233 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Perpustakaan
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Perpustakaan berbasis **REST API** yang dibangun menggunakan **Laravel 13** dan **Laravel Sanctum** untuk memenuhi tugas **UTS Pemrograman WEB Fuulstack**.
 
-## About Laravel
+Sistem menerapkan **Authentication**, **Role-Based Access Control (RBAC)**, relasi database, serta pengelolaan peminjaman buku dan denda keterlambatan.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
+# Dokumen Pengumpulan UTS
+[Laporan dan Testing Postman](./docs/DOKUMENTASI-BACKEND-SISTEM-PERPUSTAKAAN.pdf)
+[Postman Collection](./Test_API_Libraru-APP.json)
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Fitur Sistem
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Admin (Pustakawan)
 
-## Learning Laravel
+- Login
+- Kelola Data Buku (CRUD)
+- Melihat Data Anggota
+- Menghapus Anggota
+- Melihat Semua Transaksi Peminjaman
+- Menyetujui (Approve) Peminjaman Buku
+- Memproses Pengembalian Buku
+- Melihat Data Denda
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## User (Anggota)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Registrasi Akun
+- Login & Logout
+- Melihat Profil
+- Mengajukan Peminjaman Buku
+- Melihat Riwayat Peminjaman
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
+# Struktur Database
 
-## Agentic Development
+#  ERD Sederhana
+<img width="561" height="1080" alt="Diagram Tanpa Judul drawio" src="https://github.com/user-attachments/assets/429d9fc6-1390-4c21-9932-c5671cb88a88" />
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
+
+# Role Based Access Control (RBAC)
+
+# ⚙️ Instalasi Project
+
+## 1. Clone Repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/RivanWhyu/library-app.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Masuk ke folder project:
 
-## Contributing
+```bash
+cd library-app
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 2. Install Dependency
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 3. Copy File Environment
 
-## License
+Windows:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+copy .env.example .env
+```
+
+Linux/Mac:
+
+```bash
+cp .env.example .env
+```
+
+---
+
+## 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## 5. Konfigurasi Database
+
+Edit file `.env`
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=library-app
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Sesuaikan dengan database lokal Anda.
+
+---
+
+## 6. Jalankan Migration
+
+```bash
+php artisan migrate
+```
+
+---
+
+## 7. Jalankan Seeder Admin
+
+```bash
+php artisan db:seed --class=AdminSeeder
+```
+
+---
+
+## 8. Jalankan Server
+
+```bash
+php artisan serve
+```
+
+Server akan berjalan pada:
+
+```text
+http://127.0.0.1:8000
+```
+
+# Akun Admin Default
+
+```text
+Email    : admin@library.com
+Password : password
+```
+
+---
+
+# 📡 Endpoint API
+
+## Authentication
+
+| Method | Endpoint |
+|----------|----------|
+| POST | /api/register |
+| POST | /api/login |
+| POST | /api/logout |
+| GET | /api/profile |
+
+---
+
+## Books
+
+| Method | Endpoint |
+|----------|----------|
+| GET | /api/books |
+| POST | /api/books |
+| GET | /api/books/{id} |
+| PUT | /api/books/{id} |
+| DELETE | /api/books/{id} |
+
+---
+
+## Members
+
+| Method | Endpoint |
+|----------|----------|
+| GET | /api/members |
+| GET | /api/members/{id} |
+| DELETE | /api/members/{id} |
+
+---
+
+## Borrowings
+
+| Method | Endpoint |
+|----------|----------|
+| POST | /api/borrowings |
+| GET | /api/borrowings |
+| GET | /api/my-borrowings |
+| PUT | /api/borrowings/{id}/approve |
+| PUT | /api/borrowings/{id}/return |
+
+---
+
+## Fines
+
+| Method | Endpoint |
+|----------|----------|
+| GET | /api/fines |
+
+---
+
+# Struktur Folder Penting
+
+```text
+app/
+├── Http/
+│   ├── Controllers/
+│   │   └── Api/
+│   └── Middleware/
+│
+├── Models/
+│   ├── User.php
+│   ├── Book.php
+│   ├── Borrowing.php
+│   └── Fine.php
+│
+database/
+├── migrations/
+├── seeders/
+│   └── AdminSeeder.php
+│
+routes/
+└── api.php
+```
+---
+
+# Teknologi yang Digunakan
+
+- PHP 8.4+
+- Laravel 13
+- Laravel Sanctum
+- MySQL
+
+---
