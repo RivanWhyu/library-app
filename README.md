@@ -78,8 +78,6 @@ cp .env.example .env
 php artisan key:generate
 ```
 
----
-
 ## 5. Konfigurasi Database
 
 Edit file `.env`
@@ -134,7 +132,7 @@ Password : password
 
 ---
 
-# 📡 Endpoint API
+# Endpoint API
 
 ## Authentication
 
