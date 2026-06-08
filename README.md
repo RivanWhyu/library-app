@@ -6,7 +6,7 @@ Sistem menerapkan **Authentication**, **Role-Based Access Control (RBAC)**, rela
 
 ---
 # Dokumen Pengumpulan UTS
-- [Laporan dan Testing Postman](./docs/DOKUMENTASI-BACKEND-SISTEM-PERPUSTAKAAN.pdf)
+- [Laporan dan Testing Postman](https://github.com/RivanWhyu/library-app/blob/master/public/docs/DOKUMENTASI-BACKEND-SISTEM-PERPUSTAKAAN.pdf)
 - [Postman Collection](./Test_API_Libraru-APP.json)
 ---
 
